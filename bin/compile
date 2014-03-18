@@ -16,9 +16,9 @@ mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 mv qtfaststart-master qtfaststart
-ln -s qtfaststart/bin/qtfaststart qtfaststart/bin/qt-faststart
 
 echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/qtfaststart.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:vendor/qtfaststart/bin"' >> $PROFILE_PATH
+echo 'alias qt-faststart=qtfaststart' >> $PROFILE_PATH
