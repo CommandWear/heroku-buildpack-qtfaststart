@@ -1,0 +1,20 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install qtfaststart"
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+DOWNLOAD_URL="https://github.com/danielgtaylor/qtfaststart/archive/master.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
+mv qtfaststart-master qtfaststart
+cd qtfaststart
+python setup.py install
